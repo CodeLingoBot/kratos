@@ -155,6 +155,9 @@ func (ed *encodeDecode) decode(item *Item, v interface{}) (err error) {
 				*d = string(data)
 			case interface{}:
 				err = json.Unmarshal(data, v)
+			default:
+				err = ErrItemObject
+				return
 			}
 		}
 	}

@@ -19,6 +19,8 @@ func (jt *Time) Scan(src interface{}) (err error) {
 		var i int64
 		i, err = strconv.ParseInt(sc, 10, 64)
 		*jt = Time(i)
+	default:
+		err = errors.New("invalid time type")
 	}
 	return
 }
